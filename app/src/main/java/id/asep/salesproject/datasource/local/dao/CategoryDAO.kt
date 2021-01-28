@@ -11,6 +11,9 @@ interface CategoryDAO {
     @Insert
     suspend fun insert(category: Category): Long
 
+    @Insert
+    suspend fun insert(category: List<Category>): LongArray
+
     @Update
     suspend fun update(category: Category): Int
 }

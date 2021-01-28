@@ -11,6 +11,9 @@ interface CountryDAO {
     @Insert
     suspend fun insert(country: Country): Long
 
+    @Insert
+    suspend fun insert(country: List<Country>): LongArray
+
     @Update
     suspend fun update(country: Country): Int
 

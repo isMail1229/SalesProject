@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import id.asep.salesproject.datasource.local.services.FoodServices
 import id.asep.salesproject.datasource.repository.FoodMealsRepository
 import id.asep.salesproject.datasource.repository.implementation.FoodMealsRepositoryImpl
 import retrofit2.Retrofit
@@ -16,10 +17,12 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideRepository(
-        retrofit: Retrofit
+        retrofit: Retrofit,
+        foodServices: FoodServices
     ): FoodMealsRepository {
         return FoodMealsRepositoryImpl(
-            retrofit
+            retrofit,
+            foodServices
         )
     }
 }

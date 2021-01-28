@@ -11,6 +11,9 @@ interface FoodDAO {
     @Insert
     suspend fun insert(foods: Foods): Long
 
+    @Insert
+    suspend fun insert(foods: List<Foods>): LongArray
+
     @Update
     suspend fun update(foods: Foods): Int
 }

@@ -11,6 +11,9 @@ interface IngredientsDAO {
     @Insert
     suspend fun insert(ingredients: Ingredients): Long
 
+    @Insert
+    suspend fun insert(ingredients: List<Ingredients>): LongArray
+
     @Update
     suspend fun update(ingredients: Ingredients): Int
 }

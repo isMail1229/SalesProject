@@ -11,6 +11,8 @@ import id.asep.salesproject.datasource.local.dao.CategoryDAO
 import id.asep.salesproject.datasource.local.dao.CountryDAO
 import id.asep.salesproject.datasource.local.dao.FoodDAO
 import id.asep.salesproject.datasource.local.dao.IngredientsDAO
+import id.asep.salesproject.datasource.local.services.FoodServices
+import id.asep.salesproject.datasource.local.services.implementation.FoodServicesImpl
 import id.asep.salesproject.utils.Constants
 import javax.inject.Singleton
 
@@ -51,5 +53,21 @@ object DatabaseModule {
     @Provides
     fun provideCategoryDAO(db: FoodMealDatabase): CategoryDAO {
         return db.categoryDAO()
+    }
+
+    @Singleton
+    @Provides
+    fun providServices(
+        foodDAO: FoodDAO,
+        countryDAO: CountryDAO,
+        categoryDAO: CategoryDAO,
+        ingredientsDAO: IngredientsDAO
+    ): FoodServices {
+        return FoodServicesImpl(
+            foodDAO,
+            categoryDAO,
+            countryDAO,
+            ingredientsDAO
+        )
     }
 }
